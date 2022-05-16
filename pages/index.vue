@@ -10,7 +10,6 @@
         <h2>Sumate a la <span class="highlight">movida liberal!</span></h2>
       </div>
       <div class="input_container">
-        <h2>Por favor, completá con tus datos:</h2>
         <input required class="input" v-model="nombre" placeholder="Nombre" />
         <input required class="input" v-model="apellido" placeholder="Apellido" />
         <input required class="input" type="number" v-model="telefono" placeholder="Teléfono" />
@@ -194,19 +193,9 @@ body {
   align-items: center;
 }
 
-.input_container h2 {
-  width: 85%;
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-
 .formulario>div.input_container * {
   margin: 10% 0;
 }
-
-  .formulario>div.input_container :nth-child(2) {
-    margin: 5% 0 10% 0;
-  }
 
 .formulario button {
   margin: 10% 0;
