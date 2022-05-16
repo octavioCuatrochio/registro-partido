@@ -1,8 +1,16 @@
 <template>
   <div class="container">
     <form v-on:submit="submitHandler" class="formulario">
-      <h1>Unite al partido!</h1>
+      <div class="welcome_text_container">
+        <div class="text_container">
+          <h1>Frente</h1>
+          <h1>Republicano</h1>
+          <h1>Tandil</h1>
+        </div>
+        <h2>Sumate a la <span class="highlight">movida liberal!</span></h2>
+      </div>
       <div class="input_container">
+        <h2>Por favor, completá con tus datos:</h2>
         <input required class="input" v-model="nombre" placeholder="Nombre" />
         <input required class="input" v-model="apellido" placeholder="Apellido" />
         <input required class="input" type="number" v-model="telefono" placeholder="Teléfono" />
@@ -50,12 +58,6 @@ export default {
         email: this.email,
         localidad: this.localidad,
       }
-
-      if (true === true) {
-
-      }
-
-
 
       if (!this.empty(payload)) {
         this.setEmpty();
@@ -137,16 +139,42 @@ body {
   height: 100%;
   /* background-color: red; */
   display: flex;
-  background-color: #d4d8e4;
+  background-color: #6e4d9c;
   justify-content: center;
   align-items: center;
 }
 
-h1 {
-  /* margin: 10% 0; */
-  margin: 10% 0 7.5% 0;
+.welcome_text_container {
+  margin: 15% 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome_text_container h2 {
+  margin-top: 5%;
+  font-weight: 300;
+}
+
+.text_container {
+  width: 80%;
+  height: 50%;
+  border: 3px solid #6e4d9c;
+  padding: -20% 20%;
+}
+
+
+.text_container h1 {
+  padding-left: 7.5%;
+  color: #6e4d9c;
   font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.highlight {
   font-weight: 500;
+  color: #6e4d9c;
 }
 
 .formulario {
@@ -166,9 +194,19 @@ h1 {
   align-items: center;
 }
 
+.input_container h2 {
+  width: 85%;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
 .formulario>div.input_container * {
   margin: 10% 0;
 }
+
+  .formulario>div.input_container :nth-child(2) {
+    margin: 5% 0 10% 0;
+  }
 
 .formulario button {
   margin: 10% 0;

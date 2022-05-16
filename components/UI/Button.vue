@@ -19,6 +19,6 @@ export default {
     border: none;
     border-radius: 10px;
     color: white;
-    background-color: #4336ff;
+    background-color: #6e4d9c;
 }
 </style>
