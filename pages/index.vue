@@ -7,14 +7,30 @@
           <h1>Republicano</h1>
           <h1>Tandil</h1>
         </div>
-        <h2>Sumate a la <span class="highlight">movida liberal!</span></h2>
+        <h2>Votá por tu horario ideal!</h2>
       </div>
       <div class="input_container">
-        <input required class="input" v-model="nombre" placeholder="Nombre" />
-        <input required class="input" v-model="apellido" placeholder="Apellido" />
-        <input required class="input" type="number" v-model="telefono" placeholder="Teléfono" />
-        <input required class="input" type="email" v-model="email" placeholder="E-mail" />
-        <input required class="input" v-model="localidad" placeholder="Localidad" />
+        <!-- <input required class="input" v-model="nombre" placeholder="Nombre" /> -->
+        <!-- <input required class="input" v-model="apellido" placeholder="Apellido" /> -->
+        <!-- <input required class="input" type="number" v-model="telefono" placeholder="Teléfono" /> -->
+        <!-- <input required class="input" type="email" v-model="email" placeholder="E-mail" /> -->
+        <!-- <input required class="input" v-model="localidad" placeholder="Localidad" /> -->
+
+        <select name="" id="" v-model="horario">
+          <option value="" selected disabled>Selecciona tu horario ideal</option>
+          <option value="lunes19">Lunes 19hs</option>
+          <option value="lunes20">Lunes 20hs</option>
+          <option value="martes19">Martes 19hs</option>
+          <option value="martes20">Martes 20hs</option>
+          <option value="miercoles19">Miércoles 19hs</option>
+          <option value="miercoles20">Miércoles 20hs</option>
+          <option value="jueves19">Jueves 19hs</option>
+          <option value="jueves20">Jueves 20hs</option>
+          <option value="viernes19">Viernes 19hs</option>
+          <option value="viernes20">Viernes 20hs</option>
+          <option value="sabadom">Sábado de mañana</option>
+          <option value="sabadot">Sábado de tarde</option>
+        </select>
       </div>
       <Button :type="'submit'">Guardar</Button>
     </form>
@@ -37,11 +53,12 @@ export default {
     Popup,
   },
   data: () => ({
-    nombre: '',
-    apellido: '',
-    telefono: '',
-    email: '',
-    localidad: '',
+    horario: "",
+    // nombre: '',
+    // apellido: '',
+    // telefono: '',
+    // email: '',
+    // localidad: '',
     success: false,
     error: false,
     message: ""
@@ -50,16 +67,21 @@ export default {
     submitHandler(e) {
       e.preventDefault();
 
+      // let payload = {
+      //   nombre: this.nombre,
+      //   apellido: this.apellido,
+      //   telefono: this.telefono,
+      //   email: this.email,
+      //   localidad: this.localidad,
+      // }
+
       let payload = {
-        nombre: this.nombre,
-        apellido: this.apellido,
-        telefono: this.telefono,
-        email: this.email,
-        localidad: this.localidad,
+        horario: this.horario,
       }
 
+      console.log(payload);
       if (!this.empty(payload)) {
-        this.setEmpty();
+        // this.setEmpty();
 
         this.success = true;
         this.message = "Toda la info se envió correctamente.";
@@ -68,7 +90,7 @@ export default {
         }, 5000);
 
 
-        fetch("https://cefcepromoapi.000webhostapp.com/api/registro",
+        fetch("https://cefcepromoapi.000webhostapp.com/api/horario",
           {
             headers: {
               // 'Accept': 'application/json',
@@ -89,30 +111,30 @@ export default {
     },
 
     empty(payload) {
-      if (payload.nombre == null || payload.nombre == '') {
+      if (payload.horario == null || payload.horario == '') {
         return true;
       }
-      else if (payload.apellido == null || payload.apellido == '') {
-        return true;
-      }
-      else if (payload.telefono == null || payload.telefono == '') {
-        return true;
-      }
-      else if (payload.email == null || payload.email == '') {
-        return true;
-      }
-      else if (payload.localidad == null || payload.localidad == '') {
-        return true;
-      }
+      // else if (payload.apellido == null || payload.apellido == '') {
+      //   return true;
+      // }
+      // else if (payload.telefono == null || payload.telefono == '') {
+      //   return true;
+      // }
+      // else if (payload.email == null || payload.email == '') {
+      //   return true;
+      // }
+      // else if (payload.localidad == null || payload.localidad == '') {
+      //   return true;
+      // }
       return false;
     },
-    setEmpty() {
-      this.nombre = '';
-      this.apellido = '';
-      this.telefono = '';
-      this.email = '';
-      this.localidad = '';
-    }
+    // setEmpty() {
+    //   this.nombre = '';
+    //   this.apellido = '';
+    //   this.telefono = '';
+    //   this.email = '';
+    //   this.localidad = '';
+    // }
   }
 
 }
@@ -135,7 +157,8 @@ body {
 
 .container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  /* height: 100%; */
   /* background-color: red; */
   display: flex;
   background-color: #6e4d9c;
@@ -158,7 +181,7 @@ body {
 
 .text_container {
   width: 80%;
-  height: 50%;
+  /* height: 50%;   */
   border: 3px solid #6e4d9c;
   padding: -20% 20%;
 }
